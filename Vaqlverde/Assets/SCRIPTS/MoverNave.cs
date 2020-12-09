@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MoverNave : MonoBehaviour
 {
+    //Declaramos la velocidad de la nave fuera
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +17,10 @@ public class MoverNave : MonoBehaviour
     void Update()
     {
         //Método para mover la nave con el joystick
-        MoverNave();
+        SpaceshipMove();
     }
 
-    void MoverNave()
+    void SpaceshipMove()
     {
 
         //aqui asignamos el desplazamiento en horizontal
