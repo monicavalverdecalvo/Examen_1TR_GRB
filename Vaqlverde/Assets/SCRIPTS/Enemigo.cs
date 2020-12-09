@@ -40,7 +40,7 @@ public class Columna : MonoBehaviour
 
     }
     //Creamos un void para el movimiento de las columnas y su destruccion
-    void MovimientoColumna()
+    void MovimientoeNEMIGO()
     {
 
         //Ese transform coge la posicion del objeto lo mueve hacia atras para cambiar la direccion cambia el .back / .up .down .forward .left .right 
