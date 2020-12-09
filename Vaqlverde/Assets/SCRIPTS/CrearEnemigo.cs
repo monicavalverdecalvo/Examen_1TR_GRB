@@ -5,19 +5,32 @@ using UnityEngine;
 public class CrearEnemigo : MonoBehaviour
 {
     //Variable de tipo Object que contendrá el Prefab a instanciar
-    [SerializeField] GameObject MyColumn;
+    [SerializeField] GameObject Enemigo;
     //Variable de tipo Transform que contendrá el objeto de referencia
     [SerializeField] Transform RefPos;
     //Es una variable con la que le vamos a decir a nuestro metodo IniciarColumnas que tenga la  distancia entre ellas
     [SerializeField] float distobstacle;
+    //Variables para generar columnas de forma random
+    private float randomNumber;
+    Vector3 RandomPos;
 
-
+    //Distancia entre columnas
+    float distanciaSep = 6f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Startcoroutine es lo que tenemos que poner cuando queremos que se inicie una corrutina abres parentesis y entre comillas pones el nombre que le has puesto
-        StartCoroutine("ColumnCorrutine");
+        //Crear columnas iniciales
+        for (int n = 1; n <= 10; n++)
+        {
+
+            //CrearColumna(n * distaciaInicial);
+            //Creamos cada columna con la separacion establecida
+            CrearColumna(-n * distanciaSep);
+
+
+            //Startcoroutine es lo que tenemos que poner cuando queremos que se inicie una corrutina abres parentesis y entre comillas pones el nombre que le has puesto
+            StartCoroutine("ColumnCorrutine");
         InicioColumnas();
     }
 

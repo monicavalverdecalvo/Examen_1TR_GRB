@@ -7,6 +7,9 @@ public class MoverNave : MonoBehaviour
     //Declaramos la velocidad de la nave fuera
     public float speed;
 
+    //Capturo el texto del UI que indicará la distancia recorrida
+    [SerializeField] Text TextTiempo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,28 @@ public class MoverNave : MonoBehaviour
     {
         //Método para mover la nave con el joystick
         SpaceshipMove();
-    }
+
+        //Corrutina que hace cambiar el texto de tiempo
+        IEnumerator Tiempo()
+        {
+            //Bucle infinito que suma 10 en cada ciclo
+            //El segundo parámetro está vacío, por eso es infinito
+            for (int n = 0; ; n++)
+            {
+                //Cambio el texto que aparece en pantalla
+                TextTiempo.text = "Tiempo transcurrido: " + n * speed;
+
+                //cada ciclo aumenta la velocidad
+                if (speed < 30)
+                {
+                    speed = speed + 0.1f;
+                }
+
+                //Ejecuto cada ciclo esperando 1 segundo
+                yield return new WaitForSeconds(0.25f);
+
+
+            }
 
     void SpaceshipMove()
     {
