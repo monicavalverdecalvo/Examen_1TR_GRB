@@ -8,7 +8,7 @@ public class MoverNave : MonoBehaviour
     public float speed;
 
     //Capturo el texto del UI que indicará la distancia recorrida
-    [SerializeField] Text TextTiempo;
+    [SerializeField]  TextTiempo;
 
     // Start is called before the first frame update
     void Start()
@@ -41,20 +41,31 @@ public class MoverNave : MonoBehaviour
                 //Ejecuto cada ciclo esperando 1 segundo
                 yield return new WaitForSeconds(0.25f);
 
-
             }
+        }
 
-    void SpaceshipMove()
-    {
+        void SpaceshipMove()
+        {
 
-        //aqui asignamos el desplazamiento en horizontal
-        float desplX = Input.GetAxis("Horizontal");
-        //mover en el eje horizontal     
-        transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
-        //aqui asignamos el desplazamiento a los controles del mando/teclado vertical
-        float desplY = Input.GetAxis("Vertical");
-        //Esto es para mover la nave de arriba 
-        transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+            //aqui asignamos el desplazamiento en horizontal
+            float desplX = Input.GetAxis("Horizontal");
+            //mover en el eje horizontal     
+            transform.Translate(Vector3.right * Time.deltaTime * speed * desplX);
+            //aqui asignamos el desplazamiento a los controles del mando/teclado vertical
+            float desplY = Input.GetAxis("Vertical");
+            //Esto es para mover la nave de arriba 
+            transform.Translate(Vector3.up * Time.deltaTime * speed * desplY);
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+
+            if (other.gameObject.tag == "enemigo")
+            {
+
+                print("Chocado");
+                Destroy(gameObject);
+                speed = 0;
+            }
+        }
+
     }
-
-}
